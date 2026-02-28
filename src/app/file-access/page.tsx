@@ -106,9 +106,9 @@ export default function FileAccessPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">
-          File Access Mechanisms
+          File Access <span className="text-gradient">Mechanisms</span>
         </h1>
-        <p className="text-muted-foreground mt-1">
+        <p className="text-muted-foreground mt-1 leading-relaxed">
           Compare allocation methods and watch how blocks are accessed during
           read/write operations
         </p>
@@ -204,14 +204,14 @@ export default function FileAccessPage() {
                 const isAnimating = animatingBlocks.includes(block.id);
                 const color =
                   block.status === "free"
-                    ? "bg-gray-200 dark:bg-gray-800"
+                    ? "bg-muted/40"
                     : block.status === "corrupted"
                     ? "bg-red-500"
                     : block.status === "reserved"
                     ? "bg-amber-500/60"
                     : isAnimating
-                    ? "bg-cyan-400 shadow-lg shadow-cyan-400/50"
-                    : "bg-slate-600";
+                    ? "bg-cyan-400 shadow-lg shadow-cyan-400/40"
+                    : "bg-muted-foreground/25";
                 return (
                   <motion.div
                     key={block.id}
@@ -230,8 +230,8 @@ export default function FileAccessPage() {
             {/* Legend */}
             <div className="flex flex-wrap gap-4 mt-4 text-xs text-muted-foreground">
               {[
-                { color: "bg-gray-200 dark:bg-gray-800", label: "Free" },
-                { color: "bg-slate-600", label: "Used" },
+                { color: "bg-muted/40", label: "Free" },
+                { color: "bg-muted-foreground/25", label: "Used" },
                 { color: "bg-cyan-400", label: "Reading" },
                 { color: "bg-red-500", label: "Corrupted" },
                 { color: "bg-amber-500/60", label: "Reserved" },

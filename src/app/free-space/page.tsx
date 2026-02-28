@@ -83,29 +83,29 @@ export default function FreeSpacePage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">
-          Free Space Management
+          Free Space <span className="text-gradient">Management</span>
         </h1>
-        <p className="text-muted-foreground mt-1">
+        <p className="text-muted-foreground mt-1 leading-relaxed">
           Visualize how the OS tracks available disk blocks using different
           strategies
         </p>
       </div>
 
       {/* Stats bar */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
         {[
-          { label: "Total Blocks", value: stats.totalBlocks, color: "bg-blue-500" },
-          { label: "Used", value: stats.usedBlocks, color: "bg-emerald-500" },
-          { label: "Free", value: stats.freeBlocks, color: "bg-gray-400" },
-          { label: "Corrupted", value: stats.corruptedBlocks, color: "bg-red-500" },
+          { label: "Total Blocks", value: stats.totalBlocks, color: "bg-blue-400", border: "border-blue-500/10" },
+          { label: "Used", value: stats.usedBlocks, color: "bg-emerald-400", border: "border-emerald-500/10" },
+          { label: "Free", value: stats.freeBlocks, color: "bg-slate-400", border: "border-slate-500/10" },
+          { label: "Corrupted", value: stats.corruptedBlocks, color: "bg-red-400", border: "border-red-500/10" },
         ].map((s) => (
-          <Card key={s.label}>
+          <Card key={s.label} className={`card-hover ${s.border}`}>
             <CardContent className="pt-4 pb-4">
               <div className="flex items-center gap-2">
-                <div className={`w-3 h-3 rounded-full ${s.color}`} />
-                <span className="text-sm text-muted-foreground">{s.label}</span>
+                <div className={`w-2.5 h-2.5 rounded-full ${s.color}`} />
+                <span className="text-[11px] text-muted-foreground font-medium uppercase tracking-wide">{s.label}</span>
               </div>
-              <p className="text-2xl font-bold mt-1">{s.value}</p>
+              <p className="text-2xl font-bold mt-1 tabular-nums">{s.value}</p>
             </CardContent>
           </Card>
         ))}
@@ -178,17 +178,17 @@ export default function FreeSpacePage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="grid gap-[3px]" style={{ gridTemplateColumns: "repeat(32, 1fr)" }}>
+              <div className="grid gap-[2px]" style={{ gridTemplateColumns: "repeat(32, 1fr)" }}>
                 <AnimatePresence mode="popLayout">
                   {simulator.blocks.map((block, i) => {
                     const color =
                       block.status === "free"
-                        ? "bg-emerald-400/80"
+                        ? "bg-emerald-400/70"
                         : block.status === "corrupted"
                         ? "bg-red-500"
                         : block.status === "reserved"
-                        ? "bg-amber-500/70"
-                        : "bg-slate-700";
+                        ? "bg-amber-500/60"
+                        : "bg-muted-foreground/25";
                     return (
                       <Tooltip key={block.id}>
                         <TooltipTrigger asChild>
@@ -197,11 +197,11 @@ export default function FreeSpacePage() {
                             initial={{ scale: 0.5, opacity: 0 }}
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.5, opacity: 0 }}
-                            transition={{ duration: 0.2, delay: i * 0.001 }}
-                            className={`aspect-square rounded-[3px] cursor-pointer transition-all duration-200 ${color} ${
+                            transition={{ duration: 0.15, delay: i * 0.0008 }}
+                            className={`aspect-square rounded-sm cursor-pointer transition-all duration-150 ${color} ${
                               hoveredBlock === i
                                 ? "ring-2 ring-primary scale-125 z-10"
-                                : "hover:scale-110"
+                                : "hover:scale-110 hover:brightness-125"
                             }`}
                             onMouseEnter={() => setHoveredBlock(i)}
                             onMouseLeave={() => setHoveredBlock(null)}

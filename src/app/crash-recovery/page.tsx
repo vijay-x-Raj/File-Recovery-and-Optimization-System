@@ -119,9 +119,9 @@ export default function CrashRecoveryPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">
-          Disk Crash & Recovery
+          Disk Crash & <span className="text-gradient">Recovery</span>
         </h1>
-        <p className="text-muted-foreground mt-1">
+        <p className="text-muted-foreground mt-1 leading-relaxed">
           Simulate disk failures and use recovery techniques to repair the file
           system
         </p>
@@ -134,16 +134,19 @@ export default function CrashRecoveryPage() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-red-900/30 backdrop-blur-sm pointer-events-none"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-red-900/20 backdrop-blur-md pointer-events-none"
           >
             <motion.div
-              initial={{ scale: 0.5 }}
-              animate={{ scale: [0.5, 1.5, 1] }}
-              transition={{ duration: 0.5 }}
+              initial={{ scale: 0.3, opacity: 0 }}
+              animate={{ scale: [0.3, 1.3, 1], opacity: 1 }}
+              transition={{ duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
               className="text-center"
             >
-              <Zap className="h-24 w-24 text-red-500 mx-auto" />
-              <p className="text-2xl font-bold text-red-500 mt-2">
+              <div className="relative">
+                <div className="absolute inset-0 bg-red-500/30 blur-3xl rounded-full scale-150" />
+                <Zap className="h-20 w-20 text-red-500 mx-auto relative" />
+              </div>
+              <p className="text-2xl font-bold text-red-400 mt-4 tracking-wider">
                 DISK CRASH!
               </p>
             </motion.div>
@@ -252,12 +255,12 @@ export default function CrashRecoveryPage() {
               const isCorrupted = block.status === "corrupted";
               const color =
                 block.status === "free"
-                  ? "bg-gray-200 dark:bg-gray-800"
+                  ? "bg-muted/40"
                   : block.status === "corrupted"
                   ? "bg-red-500"
                   : block.status === "reserved"
                   ? "bg-amber-500/60"
-                  : "bg-emerald-600";
+                  : "bg-emerald-500/70";
 
               return (
                 <motion.div
@@ -285,8 +288,8 @@ export default function CrashRecoveryPage() {
           {/* Legend */}
           <div className="flex flex-wrap gap-4 mt-4 text-xs text-muted-foreground">
             {[
-              { color: "bg-gray-200 dark:bg-gray-800", label: "Free" },
-              { color: "bg-emerald-600", label: "Used (Healthy)" },
+              { color: "bg-muted/40", label: "Free" },
+              { color: "bg-emerald-500/70", label: "Used (Healthy)" },
               { color: "bg-red-500", label: `Corrupted (${stats.corruptedBlocks})` },
               { color: "bg-amber-500/60", label: "Reserved" },
             ].map((l) => (

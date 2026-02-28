@@ -138,31 +138,31 @@ export default function DirectoryPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">
-          Directory Structure
+          Directory <span className="text-gradient">Structure</span>
         </h1>
-        <p className="text-muted-foreground mt-1">
+        <p className="text-muted-foreground mt-1 leading-relaxed">
           Explore the hierarchical file system tree and inode metadata
         </p>
       </div>
 
       {/* Quick stats */}
-      <div className="grid grid-cols-3 gap-4">
-        <Card>
+      <div className="grid grid-cols-3 gap-3">
+        <Card className="card-hover border-amber-500/10">
           <CardContent className="pt-4 pb-4 text-center">
-            <p className="text-sm text-muted-foreground">Directories</p>
-            <p className="text-2xl font-bold">{totalDirs}</p>
+            <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wide">Directories</p>
+            <p className="text-2xl font-bold tabular-nums">{totalDirs}</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="card-hover border-blue-500/10">
           <CardContent className="pt-4 pb-4 text-center">
-            <p className="text-sm text-muted-foreground">Files</p>
-            <p className="text-2xl font-bold">{totalFiles}</p>
+            <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wide">Files</p>
+            <p className="text-2xl font-bold tabular-nums">{totalFiles}</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="card-hover border-purple-500/10">
           <CardContent className="pt-4 pb-4 text-center">
-            <p className="text-sm text-muted-foreground">Max Depth</p>
-            <p className="text-2xl font-bold">
+            <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wide">Max Depth</p>
+            <p className="text-2xl font-bold tabular-nums">
               {Math.max(
                 ...allFiles
                   .filter((f) => !f.isDirectory)

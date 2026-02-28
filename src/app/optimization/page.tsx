@@ -169,25 +169,25 @@ export default function OptimizationPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold tracking-tight">
-          Read/Write Optimization
+          Read/Write <span className="text-gradient">Optimization</span>
         </h1>
-        <p className="text-muted-foreground mt-1">
+        <p className="text-muted-foreground mt-1 leading-relaxed">
           Defragment the disk, benchmark allocation methods, and optimize
           access times
         </p>
       </div>
 
       {/* Current performance stats */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        <Card>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <Card className="card-hover border-orange-500/10">
           <CardContent className="pt-4 pb-4">
             <div className="flex items-center gap-2 mb-1">
-              <Layers className="h-4 w-4 text-orange-500" />
-              <span className="text-sm text-muted-foreground">
+              <Layers className="h-4 w-4 text-orange-400" />
+              <span className="text-[11px] text-muted-foreground font-medium uppercase tracking-wide">
                 Fragmentation
               </span>
             </div>
-            <p className="text-2xl font-bold">
+            <p className="text-2xl font-bold tabular-nums">
               {stats.fragmentationPercent}%
             </p>
             <Progress
@@ -196,37 +196,37 @@ export default function OptimizationPage() {
             />
           </CardContent>
         </Card>
-        <Card>
+        <Card className="card-hover border-blue-500/10">
           <CardContent className="pt-4 pb-4">
             <div className="flex items-center gap-2 mb-1">
-              <Clock className="h-4 w-4 text-blue-500" />
-              <span className="text-sm text-muted-foreground">
+              <Clock className="h-4 w-4 text-blue-400" />
+              <span className="text-[11px] text-muted-foreground font-medium uppercase tracking-wide">
                 Avg Seek Time
               </span>
             </div>
-            <p className="text-2xl font-bold">{stats.avgSeekTime}ms</p>
+            <p className="text-2xl font-bold tabular-nums">{stats.avgSeekTime}ms</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="card-hover border-purple-500/10">
           <CardContent className="pt-4 pb-4">
             <div className="flex items-center gap-2 mb-1">
-              <ArrowRightLeft className="h-4 w-4 text-purple-500" />
-              <span className="text-sm text-muted-foreground">
+              <ArrowRightLeft className="h-4 w-4 text-purple-400" />
+              <span className="text-[11px] text-muted-foreground font-medium uppercase tracking-wide">
                 Avg Transfer
               </span>
             </div>
-            <p className="text-2xl font-bold">{stats.avgTransferTime}ms</p>
+            <p className="text-2xl font-bold tabular-nums">{stats.avgTransferTime}ms</p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="card-hover border-emerald-500/10">
           <CardContent className="pt-4 pb-4">
             <div className="flex items-center gap-2 mb-1">
-              <Gauge className="h-4 w-4 text-emerald-500" />
-              <span className="text-sm text-muted-foreground">
+              <Gauge className="h-4 w-4 text-emerald-400" />
+              <span className="text-[11px] text-muted-foreground font-medium uppercase tracking-wide">
                 Fragmented Files
               </span>
             </div>
-            <p className="text-2xl font-bold">{fragmentedFiles.length}</p>
+            <p className="text-2xl font-bold tabular-nums">{fragmentedFiles.length}</p>
           </CardContent>
         </Card>
       </div>
@@ -283,12 +283,12 @@ export default function OptimizationPage() {
 
                 let color =
                   block.status === "free"
-                    ? "bg-gray-200 dark:bg-gray-800"
+                    ? "bg-muted/40"
                     : block.status === "reserved"
                     ? "bg-amber-500/60"
                     : block.status === "corrupted"
                     ? "bg-red-500"
-                    : "bg-emerald-600";
+                    : "bg-emerald-500/70";
 
                 if (isMovingFrom) color = "bg-orange-400";
                 if (isMovingTo) color = "bg-cyan-400";
@@ -310,11 +310,11 @@ export default function OptimizationPage() {
             </div>
             <div className="flex flex-wrap gap-4 mt-3 text-xs text-muted-foreground">
               <div className="flex items-center gap-1">
-                <div className="w-3 h-3 rounded-sm bg-emerald-600" />
+                <div className="w-3 h-3 rounded-sm bg-emerald-500/70" />
                 Used
               </div>
               <div className="flex items-center gap-1">
-                <div className="w-3 h-3 rounded-sm bg-gray-200 dark:bg-gray-800" />
+                <div className="w-3 h-3 rounded-sm bg-muted/40" />
                 Free
               </div>
               <div className="flex items-center gap-1">
