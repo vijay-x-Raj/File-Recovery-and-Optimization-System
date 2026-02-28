@@ -99,7 +99,7 @@ export default function FreeSpacePage() {
           { label: "Free", value: stats.freeBlocks, color: "bg-slate-400", border: "border-slate-500/10" },
           { label: "Corrupted", value: stats.corruptedBlocks, color: "bg-red-400", border: "border-red-500/10" },
         ].map((s) => (
-          <Card key={s.label} className={`card-hover ${s.border}`}>
+          <Card key={s.label} className={`card-hover glass ${s.border}`}>
             <CardContent className="pt-4 pb-4">
               <div className="flex items-center gap-2">
                 <div className={`w-2.5 h-2.5 rounded-full ${s.color}`} />

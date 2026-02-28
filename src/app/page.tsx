@@ -170,7 +170,7 @@ export default function DashboardPage() {
             key={item.label}
             variants={fadeUp}
           >
-            <Card className={`card-hover ${item.border}`}>
+            <Card className={`card-hover glass ${item.border}`}>
               <CardContent className="pt-4 pb-4">
                 <div className="flex items-center gap-2 mb-1">
                   <item.icon className={`h-4 w-4 ${item.color}`} />

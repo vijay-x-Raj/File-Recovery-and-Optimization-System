@@ -179,7 +179,7 @@ export default function OptimizationPage() {
 
       {/* Current performance stats */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <Card className="card-hover border-orange-500/10">
+        <Card className="card-hover glass border-orange-500/10">
           <CardContent className="pt-4 pb-4">
             <div className="flex items-center gap-2 mb-1">
               <Layers className="h-4 w-4 text-orange-400" />
@@ -196,7 +196,7 @@ export default function OptimizationPage() {
             />
           </CardContent>
         </Card>
-        <Card className="card-hover border-blue-500/10">
+        <Card className="card-hover glass border-blue-500/10">
           <CardContent className="pt-4 pb-4">
             <div className="flex items-center gap-2 mb-1">
               <Clock className="h-4 w-4 text-blue-400" />
@@ -207,7 +207,7 @@ export default function OptimizationPage() {
             <p className="text-2xl font-bold tabular-nums">{stats.avgSeekTime}ms</p>
           </CardContent>
         </Card>
-        <Card className="card-hover border-purple-500/10">
+        <Card className="card-hover glass border-purple-500/10">
           <CardContent className="pt-4 pb-4">
             <div className="flex items-center gap-2 mb-1">
               <ArrowRightLeft className="h-4 w-4 text-purple-400" />
@@ -218,7 +218,7 @@ export default function OptimizationPage() {
             <p className="text-2xl font-bold tabular-nums">{stats.avgTransferTime}ms</p>
           </CardContent>
         </Card>
-        <Card className="card-hover border-emerald-500/10">
+        <Card className="card-hover glass border-emerald-500/10">
           <CardContent className="pt-4 pb-4">
             <div className="flex items-center gap-2 mb-1">
               <Gauge className="h-4 w-4 text-emerald-400" />

@@ -147,19 +147,19 @@ export default function DirectoryPage() {
 
       {/* Quick stats */}
       <div className="grid grid-cols-3 gap-3">
-        <Card className="card-hover border-amber-500/10">
+        <Card className="card-hover glass border-amber-500/10">
           <CardContent className="pt-4 pb-4 text-center">
             <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wide">Directories</p>
             <p className="text-2xl font-bold tabular-nums">{totalDirs}</p>
           </CardContent>
         </Card>
-        <Card className="card-hover border-blue-500/10">
+        <Card className="card-hover glass border-blue-500/10">
           <CardContent className="pt-4 pb-4 text-center">
             <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wide">Files</p>
             <p className="text-2xl font-bold tabular-nums">{totalFiles}</p>
           </CardContent>
         </Card>
-        <Card className="card-hover border-purple-500/10">
+        <Card className="card-hover glass border-purple-500/10">
           <CardContent className="pt-4 pb-4 text-center">
             <p className="text-[11px] text-muted-foreground font-medium uppercase tracking-wide">Max Depth</p>
             <p className="text-2xl font-bold tabular-nums">
